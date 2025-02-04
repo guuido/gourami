@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environment
+venv/
+.env/
+.venv/
+env/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# Configuration
+.env
+*.env
+
+# Model weights & checkpoints
+*.pth
+*.pt
+*.bin
+*.safetensors
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Large data files
+*.csv
+*.json
+*.sqlite3
+
+# Machine Learning specific
+wandb/
+mlruns/

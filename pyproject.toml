@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gourami"
+version = "0.1.0"
+description = "An open framework for building chatbots with pluggable AI models"
+readme = "README.md"
+authors = [
+    {name = "Tommaso Paulon"},
+]
+license = {text = "MIT"}
+requires-python = ">=3.7"
+dependencies = [
+    "fastapi==0.115.8",
+    "uvicorn[standard]==0.34.0",
+    "click==8.1.8",
+    "pydantic-settings==2.7.1",
+    "asyncio==3.4.3"
+]
+
+[project.optional-dependencies]
+
+openai = ["openai>=1.0.0"]
+anthropic = ["anthropic>=0.20.0"]
+google = ["google-generativeai"]
+huggingface = [
+    "transformers==4.48.2",
+    "torch==2.6.0"
+]
+mixtral = [
+    "transformers==4.48.2",
+    "torch==2.6.0",
+    "accelerate==1.3.0",
+    "sentencepiece==0.2.0",
+    "bitsandbytes==0.45.1"
+]
+llama = [
+    "transformers==4.48.2",
+    "torch==2.6.0",
+    "accelerate==1.3.0",
+    "sentencepiece==0.2.0",
+    "bitsandbytes==0.45.1"
+]
+
+[project.entry-points."gourami.model_plugins"]
+
+"openai" = "gourami.plugins.openai_plugin:OpenAIModel"
+"anthropic" = "gourami.plugins.anthropic_plugin:AnthropicModel"
+"google" = "gourami.plugins.google_plugin:GoogleModel"
+"huggingface" = "gourami.plugins.huggingface_plugin:HuggingFaceModel"
+"mixtral" = "gourami.plugins.mixtral_plugin:MixtralModel"
+"llama" = "gourami.plugins.llama_plugin:LlamaModel"
+
+[project.urls]
+Homepage = "https://github.com/guuido/gourami.git"
+
+[project.scripts]
+gourami = "gourami.cli.main:cli"
